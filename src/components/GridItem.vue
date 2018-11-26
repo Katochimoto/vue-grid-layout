@@ -80,7 +80,7 @@
         cursor: sw-resize;
         right: auto;
     }
-    
+
     .vue-grid-item.disable-userselect {
         user-select: none;
     }
@@ -470,9 +470,11 @@
                     }
                     case "resizeend": {
                         //console.log("### resize end => x=" +this.innerX + " y=" + this.innerY + " w=" + this.innerW + " h=" + this.innerH);
-                        pos = this.calcPosition(this.innerX, this.innerY, this.innerW, this.innerH);
-                        newSize.width = pos.width;
-                        newSize.height = pos.height;
+                        // pos = this.calcPosition(this.innerX, this.innerY, this.innerW, this.innerH);
+                        // newSize.width = pos.width;
+                        // newSize.height = pos.height;
+                        newSize.width = this.resizing.width;
+                        newSize.height = this.resizing.height;
 //                        console.log("### resize end => " + JSON.stringify(newSize));
                         this.resizing = null;
                         this.isResizing = false;
