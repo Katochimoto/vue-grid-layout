@@ -6,7 +6,7 @@
 
 vue-grid-layout is a grid layout system, like [Gridster](http://dsmorse.github.io/gridster.js/), for Vue.js. **Heavily inspired in [React-Grid-Layout](https://github.com/STRML/react-grid-layout)**
 
-### **Current version:** 2.3.1 (Supports Vue 2.2+)
+### **Current version:** 2.3.4 (Supports Vue 2.2+)
 
 ### **For Vue 2.1.10 and below use version [2.1.3](https://github.com/jbaysolutions/vue-grid-layout/tree/2.1.3)**
 ### **For Vue 1 use version [1.0.3](https://github.com/jbaysolutions/vue-grid-layout/tree/1.0.3)** 
@@ -38,6 +38,8 @@ Also check https://cli.vuejs.org/guide/build-targets.html#library
 #### Projects using vue-grid-layout
 
 - [Draxed](https://www.draxed.com/?utm_source=github&utm_medium=web&utm_campaign=vue-grid-layout)
+- [cryptotiles](https://www.cryptotiles.io/?utm_source=github&utm_medium=web&utm_campaign=vue-grid-layout)
+- [Data Providers](https://www.dataproviders.io/?utm_source=github&utm_medium=web&utm_campaign=vue-grid-layout)
 
 *Know of others? Create a PR to let me know!*
 
@@ -45,6 +47,7 @@ Also check https://cli.vuejs.org/guide/build-targets.html#library
 
 * Draggable widgets
 * Resizable widgets
+* Static widgets
 * Bounds checking for dragging and resizing
 * Widgets may be added or removed without rebuilding grid
 * Layout can be serialized and restored
@@ -105,7 +108,7 @@ Include the browser-ready bundle (download from [releases](https://github.com/jb
 	    {"x":0,"y":5,"w":2,"h":5,"i":"6"},
 	    {"x":2,"y":5,"w":2,"h":5,"i":"7"},
 	    {"x":4,"y":5,"w":2,"h":5,"i":"8"},
-	    {"x":6,"y":4,"w":2,"h":4,"i":"9"},
+	    {"x":6,"y":3,"w":2,"h":4,"i":"9"},
 	    {"x":8,"y":4,"w":2,"h":4,"i":"10"},
 	    {"x":10,"y":4,"w":2,"h":4,"i":"11"},
 	    {"x":0,"y":10,"w":2,"h":5,"i":"12"},
@@ -382,6 +385,15 @@ Include the browser-ready bundle (download from [releases](https://github.com/jb
 
     If default value is `null` then it's inherited from parent.
 
+* **static**
+    
+    * type: `Boolean`
+    * required: `false`
+    * default: `false`
+
+    Says if item is static (won't be draggable, resizable or moved by other items).
+
+
 * **dragIgnoreFrom**
     
     * type: `String`
@@ -440,6 +452,10 @@ Working example [here](https://jbaysolutions.github.io/vue-grid-layout/examples/
             :vertical-compact="true"
             :margin="[10, 10]"
             :use-css-transforms="true"
+            @layout-created="layoutCreatedEvent"
+            @layout-before-mount="layoutBeforeMountEvent"
+            @layout-mounted="layoutMountedEvent"
+            @layout-ready="layoutReadyEvent"
             @layout-updated="layoutUpdatedEvent"
     >
 
@@ -457,6 +473,54 @@ Working example [here](https://jbaysolutions.github.io/vue-grid-layout/examples/
         </grid-item>
     </grid-layout>
 ```` 
+
+* **layoutCreatedEvent**
+
+    Layout created event
+
+    Emited on the component created lifecycle hook
+
+```javascript
+    layoutCreatedEvent: function(newLayout){
+      console.log("Created layout: ", newLayout)
+    }
+```
+
+* **layoutBeforeMountEvent**
+
+    Layout beforeMount event
+
+    Emited on the component beforeMount lifecycle hook
+
+```javascript
+    layoutBeforeMountEvent: function(newLayout){
+      console.log("beforeMount layout: ", newLayout)
+    }
+```
+
+* **layoutMountedEvent**
+
+    Layout mounted event
+
+    Emited on the component mounted lifecycle hook
+
+```javascript
+    layoutMountedEvent: function(newLayout){
+      console.log("Mounted layout: ", newLayout)
+    }
+```
+
+* **layoutReadyEvent**
+
+    Layout ready event
+
+    Emited when all the operations on the mount hook finish
+
+```javascript
+    layoutReadyEvent: function(newLayout){
+      console.log("Ready layout: ", newLayout)
+    }
+```
 
 * **layoutUpdatedEvent**
 
@@ -539,5 +603,5 @@ If you have a feature request, please add it as an issue or make a pull request.
 - [x] Responsive
 - [x] Draggable grid items
 - [x] Resizable grid items
-- [ ] Static elements
+- [x] Static elements
 - [x] Min/max w/h per item

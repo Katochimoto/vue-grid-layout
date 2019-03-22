@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.3.4 (Mar 5, 2019)
+
+* Support for static items (thanks [panjiangyi](https://github.com/panjiangyi)).
+* RTL bugfix (thanks [irvingwa](https://github.com/irvingwa)).
+* Memory leak fixes (thanks [aiankile](https://github.com/aiankile)).
+* Fixed exception on grid layout mount (thanks [BenoitZugmeyer](https://github.com/BenoitZugmeyer)).
+* Fixed overlapping and resizing bugs on responsive mode (thanks [shpfive](https://github.com/shpfive)).
+* Added new events emited by GridLayout (layout-created, layout-before-mount, layout-mounted, layout-ready) (thanks [samuelmolinski](https://github.com/samuelmolinski)).
+
+## 2.3.3 (Dec 26, 2018)
+
+* Reverted adding vue as external, which caused problems loading umd.
+
+## 2.3.2 (Dec 13, 2018)
+
+* Added vue as externals webpack config to fix startup problems (thanks [Micene9](https://github.com/Micene09))
+
 ## 2.3.1 (Nov 6, 2018)
 
 * Previous fix for touch dragging on Android broke dragging on other mobile browsers (thanks [onx2](https://github.com/onx2))
